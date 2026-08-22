@@ -45,7 +45,8 @@ main{position:relative;z-index:20}
 .section-title{color:var(--accent);margin-bottom:1rem}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
 .service-card{background:var(--card);padding:1.25rem;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-.service-card .icon{font-size:1.8rem;margin-bottom:0.5rem}
+.service-card .icon{display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin-bottom:0.75rem;border-radius:12px;background:rgba(200,154,58,0.08);color:var(--accent)}
+.service-card .icon svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .service-card h3{margin:0 0 0.5rem}
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .diff{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:1rem;border-radius:8px;transition:transform .24s ease,box-shadow .24s ease}
