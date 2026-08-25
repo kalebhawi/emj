@@ -10,8 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var digitos = TELEFONE.replace(/\D/g, "");
   var ddd = digitos.slice(2, 4);
   var numero = digitos.slice(4);
-  var exibicao = "(" + ddd + ") " + numero.slice(0, numero.length - 4) + "-" + numero.slice(-4);
-  var mensagem = encodeURIComponent("Olá, preciso de informação ou de orçamento.");
+  var exibicao =
+    "(" +
+    ddd +
+    ") " +
+    numero.slice(0, numero.length - 4) +
+    "-" +
+    numero.slice(-4);
+  var mensagem = encodeURIComponent(
+    "Olá, preciso de informação ou de orçamento.",
+  );
 
   var link = "https://wa.me/" + digitos + "?text=" + mensagem;
   document
