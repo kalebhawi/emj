@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
     el.href = "tel:+" + digitos;
   });
 
+  copiaAoClicar();
+
   // mantem o telefone dos dados estruturados alinhado com a constante acima
   var dados = document.querySelector('script[type="application/ld+json"]');
   if (dados) {
@@ -43,3 +45,72 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (e) {}
   }
 });
+
+// ---------------------------------------------------------------
+// Copiar telefone e e-mail para a area de transferencia.
+// navigator.clipboard cobre desktop e mobile atuais; o segundo
+// caminho atende http/file:// e navegadores antigos, incluindo o
+// tratamento de selecao exigido pelo Safari do iOS.
+// ---------------------------------------------------------------
+function copiarTexto(texto) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(texto);
+  }
+
+  return new Promise(function (resolve, reject) {
+    var campo = document.createElement("textarea");
+    campo.value = texto;
+    campo.contentEditable = "true";
+    campo.readOnly = false;
+    campo.style.position = "fixed";
+    campo.style.top = "0";
+    campo.style.opacity = "0";
+    campo.style.fontSize = "16px"; // evita o zoom automatico no iOS
+    document.body.appendChild(campo);
+
+    var intervalo = document.createRange();
+    intervalo.selectNodeContents(campo);
+    var selecao = window.getSelection();
+    selecao.removeAllRanges();
+    selecao.addRange(intervalo);
+    campo.setSelectionRange(0, 999999);
+
+    var copiou = false;
+    try {
+      copiou = document.execCommand("copy");
+    } catch (e) {}
+
+    selecao.removeAllRanges();
+    document.body.removeChild(campo);
+    copiou ? resolve() : reject(new Error("copia nao suportada"));
+  });
+}
+
+function copiaAoClicar() {
+  var aviso = document.querySelector(".footer-contato [role=\"status\"]");
+  var relogio;
+
+  document.querySelectorAll("[data-copiavel]").forEach(function (el) {
+    el.addEventListener("click", function (evento) {
+      var valor = el.textContent.trim();
+      if (!valor) return;
+
+      evento.preventDefault();
+
+      copiarTexto(valor)
+        .then(function () {
+          el.classList.add("copiado");
+          if (aviso) aviso.textContent = "Copiado";
+          clearTimeout(relogio);
+          relogio = setTimeout(function () {
+            el.classList.remove("copiado");
+            if (aviso) aviso.textContent = "";
+          }, 1800);
+        })
+        .catch(function () {
+          // sem permissao de area de transferencia: segue o link normalmente
+          window.location.href = el.href;
+        });
+    });
+  });
+}
