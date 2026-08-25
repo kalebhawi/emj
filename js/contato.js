@@ -4,7 +4,7 @@
 // no rodape e o destino do botao flutuante do WhatsApp.
 // Formato: DDI + DDD + numero, somente digitos.
 // ---------------------------------------------------------------
-var TELEFONE = "5551995747331";
+var TELEFONE = "5551981265023";
 
 document.addEventListener("DOMContentLoaded", function () {
   var digitos = TELEFONE.replace(/\D/g, "");
@@ -32,4 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
     el.textContent = exibicao;
     el.href = "tel:+" + digitos;
   });
+
+  // mantem o telefone dos dados estruturados alinhado com a constante acima
+  var dados = document.querySelector('script[type="application/ld+json"]');
+  if (dados) {
+    try {
+      var json = JSON.parse(dados.textContent);
+      json.telephone = "+" + digitos;
+      dados.textContent = JSON.stringify(json);
+    } catch (e) {}
+  }
 });

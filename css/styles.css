@@ -10,6 +10,9 @@
   --gold: #d7a84a;
   --gold-soft: rgba(215, 168, 74, 0.12);
   --shadow: 0 18px 40px rgba(0,0,0,0.35);
+  --fade-painel: linear-gradient(90deg, var(--panel), rgba(18, 25, 34, 0.45));
+  --fade-dourado: linear-gradient(90deg, rgba(216, 184, 110, 0.82), rgba(216, 184, 110, 0.65));
+  --borda-dourada: rgba(216, 184, 110, 0.82);
   --shadow-topo: 0 -18px 40px rgba(0,0,0,0.35);
   --container: 1200px;
 }
@@ -622,7 +625,7 @@ section .narrow {
 }
 
 .solution-card {
-  background: var(--panel);
+  background: var(--fade-painel);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 24px 20px;
@@ -630,8 +633,8 @@ section .narrow {
 }
 
 .solution-card:nth-child(even) {
-  background: #d7a84a;
-  border-color: #d7a84a;
+  background: var(--fade-dourado);
+  border-color: var(--borda-dourada);
   color: #111619;
 }
 
@@ -1446,7 +1449,7 @@ section .narrow {
   display: grid;
   gap: 24px;
   align-items: center;
-  background: var(--panel);
+  background: var(--fade-painel);
   border: 1px solid var(--line);
   border-radius: 26px;
   padding: 22px;
@@ -1454,8 +1457,8 @@ section .narrow {
 }
 
 .linha-item:nth-child(even) .linha-card {
-  background: #d7a84a;
-  border-color: #d7a84a;
+  background: var(--fade-dourado);
+  border-color: var(--borda-dourada);
   color: #111619;
 }
 
@@ -1479,7 +1482,7 @@ section .narrow {
   border-radius: 18px;
 }
 
-.linha-texto h3 {
+.linha-texto h2 {
   margin: 0 0 12px;
   font-size: clamp(1.7rem, 2vw, 2.4rem);
   letter-spacing: -0.05em;
