@@ -1198,25 +1198,19 @@ section .narrow {
   }
 
   .header-inner {
-    height: 96px;
+    height: 84px;
   }
 
   .logo img {
-    height: 32px;
+    height: 36px;
   }
 
   .logo .marca-titulo {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   .logo .marca-sub {
-    font-size: 0.42rem;
-    letter-spacing: 0.1em;
-    white-space: normal;
-  }
-
-  .logo .marca-sub br {
-    display: inline;
+    display: none;
   }
 
   .hero {
