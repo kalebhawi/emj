@@ -46,6 +46,32 @@ img { max-width: 100%; display: block; }
 
 a { color: inherit; }
 
+/* Foco de teclado visivel em qualquer fundo (WCAG 2.4.7 / LBI 13.146). */
+:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(10, 13, 18, 0.85);
+  border-radius: 6px;
+}
+
+/* Pula direto para o conteudo, primeiro item do Tab (WCAG 2.4.1). */
+.pular-conteudo {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--gold);
+  color: #111619;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 10px 0;
+}
+
+.pular-conteudo:focus {
+  left: 0;
+}
+
 svg {
   width: 18px;
   height: 18px;
@@ -68,7 +94,7 @@ svg {
 }
 
 .header-inner {
-  height: 104px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -77,15 +103,12 @@ svg {
 
 .logo {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
   text-decoration: none;
-  min-width: 0;
 }
 
 .logo img {
-  height: 40px;
+  height: 52px;
   width: auto;
 }
 
@@ -121,21 +144,6 @@ svg {
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.55));
 }
 
-.logo .marca-titulo {
-  font-size: 1.15rem;
-  letter-spacing: 0.24em;
-  text-indent: 0.24em;
-}
-
-.logo .marca-sub {
-  font-size: 0.5rem;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-}
-
-.logo .marca-sub br {
-  display: none;
-}
 
 .main-nav {
   display: flex;
@@ -245,7 +253,7 @@ svg {
 .hero-copy p {
   max-width: 620px;
   margin: 0 0 30px;
-  color: rgba(248, 248, 248, 0.8);
+  color: #16191d;
   font-size: 1.14rem;
   line-height: 1.7;
 }
@@ -1198,19 +1206,11 @@ section .narrow {
   }
 
   .header-inner {
-    height: 84px;
+    height: 76px;
   }
 
   .logo img {
-    height: 36px;
-  }
-
-  .logo .marca-titulo {
-    font-size: 1.05rem;
-  }
-
-  .logo .marca-sub {
-    display: none;
+    height: 44px;
   }
 
   .hero {
@@ -1388,153 +1388,6 @@ section .narrow {
 .legal-table th {
   color: var(--text);
   background: rgba(255,255,255,0.03);
-}
-
-/* ---------- Aviso de cookies ---------- */
-
-.cookie-banner {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 60;
-  max-height: 20vh;
-  overflow-y: auto;
-  background: var(--panel);
-  border-top: 1px solid var(--line);
-  box-shadow: var(--shadow-topo);
-}
-
-.cookie-inner {
-  width: min(var(--container), calc(100% - 32px));
-  margin: 0 auto;
-  padding: 14px 0 16px;
-  display: grid;
-  gap: 12px;
-}
-
-.cookie-texto h2 {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.cookie-texto p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
-  font-size: 0.88rem;
-  max-width: 78ch;
-}
-
-.cookie-texto a {
-  color: var(--gold);
-}
-
-.cookie-opcoes[hidden] {
-  display: none;
-}
-
-.cookie-opcoes {
-  display: grid;
-  gap: 12px;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.02);
-}
-
-.cookie-opcao {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  align-items: start;
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 0.94rem;
-  cursor: pointer;
-}
-
-.cookie-opcao input {
-  margin-top: 4px;
-  accent-color: var(--gold);
-}
-
-.cookie-opcao strong {
-  display: block;
-  color: var(--text);
-  margin-bottom: 2px;
-}
-
-.cookie-acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.cookie-btn {
-  flex: 1 1 190px;
-  padding: 0.85rem 1.3rem;
-  border-radius: 10px;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 0.97rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.cookie-btn:hover {
-  transform: translateY(-2px);
-}
-
-.cookie-btn-principal {
-  border: 1px solid rgba(215, 168, 74, 0.5);
-  background: linear-gradient(180deg, #d7a84a 0%, #b98b34 100%);
-  color: #111619;
-}
-
-.cookie-btn-secundario {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-}
-
-.cookie-btn-secundario:hover {
-  border-color: rgba(215, 168, 74, 0.5);
-}
-
-@media (min-width: 760px) {
-  .cookie-acoes {
-    justify-content: flex-end;
-  }
-
-  .cookie-btn {
-    flex: 0 0 auto;
-    min-width: 150px;
-  }
-}
-
-@media (min-width: 980px) {
-  .cookie-inner {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: 24px;
-  }
-
-  .cookie-texto {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .cookie-acoes {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .cookie-opcoes {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
 }
 
 /* ---------- Servicos em zigue-zague ---------- */
