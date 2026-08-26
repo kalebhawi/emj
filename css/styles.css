@@ -108,7 +108,7 @@ svg {
 }
 
 .logo img {
-  height: 52px;
+  height: 68px;
   width: auto;
 }
 
@@ -1175,7 +1175,7 @@ section .narrow {
   }
 
   .hero-visual {
-    min-height: 0;
+    min-height: 430px;
   }
 
   .story-inner,
@@ -1210,7 +1210,7 @@ section .narrow {
   }
 
   .logo img {
-    height: 44px;
+    height: 56px;
   }
 
   .hero {
