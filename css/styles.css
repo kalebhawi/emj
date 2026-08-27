@@ -270,7 +270,7 @@ svg {
   width: min(100%, 930px);
   height: 100%;
   clip-path: ellipse(82% 83% at 82% 50%);
-  background: url('../assets/capa.png') center/cover no-repeat;
+  background: url('../assets/capa.webp') center/cover no-repeat;
 }
 
 .story {
