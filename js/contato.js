@@ -4,7 +4,7 @@
 // no rodape e o destino do botao flutuante do WhatsApp.
 // Formato: DDI + DDD + numero, somente digitos.
 // ---------------------------------------------------------------
-var TELEFONE = "5551981265023";
+var TELEFONE = "5551980512233";
 
 document.addEventListener("DOMContentLoaded", function () {
   var digitos = TELEFONE.replace(/\D/g, "");
